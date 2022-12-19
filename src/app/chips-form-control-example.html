@@ -9,7 +9,7 @@
     </video>
     <div class="caption">
       <textarea *ngFor="let key of Object.keys(selectedElems)" aria-label="'textarea' + key"
-      style="height: 50px; width: width: 100%;;  background-color: transparent; border: 0 none;z-index: 1" 
+      style="height: 50px; width: width: 100%;;  background-color: transparent; border: 0 none;z-index: 1;" 
       cdkDrag 
       cdkDragBoundary=".container"
       (cdkDragEnded)="onDragEnded(key, $event)"> 👌 {{key}} 👌</textarea>
