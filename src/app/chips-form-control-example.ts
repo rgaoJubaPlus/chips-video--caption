@@ -14,8 +14,9 @@ import { CdkDragEnd, CdkDragDrop } from '@angular/cdk/drag-drop';
 export class ChipsFormControlExample {
   Object = Object;
   selectedElems: any = {
-    city: { startX: 0, startY: 0, content: []},
-    caption: { startX: 0, startY: 0, content: [] },
+    video: { startX: -700, startY: 1 },
+    city: { startX: 0, startY: 0, captions: [] },
+    caption: { startX: 0, startY: 0, captions: [] },
   };
 
   onDragEnded(reelID: string, event: CdkDragEnd) {
@@ -37,19 +38,22 @@ export class ChipsFormControlExample {
     console.log(this.selectedElems);
 
     // video position and elements positions
-    let positions : any = {}
-    var e3 = document.getElementById("demoVideo");
+    let positions: any = {};
+    var e3 = document.getElementById('demoVideo');
     if (e3 != null) {
       positions['video'] = JSON.stringify(e3.getBoundingClientRect());
     }
-    
+
     for (let key of Object.keys(this.selectedElems)) {
-      var e = document.getElementById("object-" + key);
-      if (e == null) {console.log('not found element');continue;}
-      positions[key] = JSON.stringify(e.getBoundingClientRect())
+      var e = document.getElementById('object-' + key);
+      if (e == null) {
+        console.log('not found element');
+        continue;
+      }
+      positions[key] = JSON.stringify(e.getBoundingClientRect());
     }
-    request['positions'] = positions
-    console.log(request)
+    request['sizes'] = positions;
+    console.log(request);
   }
 
   keywords = ['angular', 'how-to', 'tutorial', 'accessibility'];
@@ -57,7 +61,7 @@ export class ChipsFormControlExample {
 
   removeKeyword(keyword: string) {
     const index = this.Object.keys(this.selectedElems).indexOf(keyword);
-    console.log(index)
+    console.log(index);
     if (index >= 0) {
       // this.keywords.splice(index, 1);
       delete this.selectedElems[keyword];
@@ -77,11 +81,11 @@ export class ChipsFormControlExample {
   }
 
   removeCaption(keyword: string, caption: string) {
-    const index = this.selectedElems[keyword]['content'].indexOf(caption);
-    console.log(index)
+    const index = this.selectedElems[keyword]['captions'].indexOf(caption);
+    console.log(index);
     if (index >= 0) {
       // this.keywords.splice(index, 1);
-      this.selectedElems[keyword]['content'].splice(index, 1);
+      this.selectedElems[keyword]['captions'].splice(index, 1);
     }
   }
 
@@ -90,7 +94,7 @@ export class ChipsFormControlExample {
 
     // Add our keyword
     if (value) {
-      this.selectedElems[keyword]['content'].push(value);
+      this.selectedElems[keyword]['captions'].push(value);
     }
 
     // Clear the input value
