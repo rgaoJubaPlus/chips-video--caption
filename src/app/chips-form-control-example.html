@@ -1,24 +1,28 @@
-<div style="width: 100%;background-color: yellow"> 
+<div style="width: 100%;background-color: white"> 
   
   
   <div class="video-container">
 
     
-    <video autoplay muted loop>
+    <video id='demoVideo' autoplay muted loop>
         <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
     </video>
     <div class="caption">
-      <textarea *ngFor="let key of Object.keys(selectedElems)" aria-label="'textarea' + key"
-      style="height: 50px; width: width: 100%;;  background-color: transparent; border: 0 none;z-index: 1;" 
-      cdkDrag 
-      cdkDragBoundary=".container"
-      (cdkDragEnded)="onDragEnded(key, $event)"> 👌 {{key}} 👌</textarea>
+      <div *ngFor="let key of Object.keys(selectedElems)"  id="{{ 'object-' + key}}">
+        <textarea aria-label="'textarea-' + key"
+        style="height: 50px; width: width: 100%;;  background-color: transparent; border: 0 none;z-index: 1;" 
+        cdkDrag 
+        cdkDragBoundary=".container"
+        (cdkDragEnded)="onDragEnded(key, $event)"> 👌 {{key}} 👌</textarea>
+      </div>
+
+      <button (click) = "saveThePlan()"> save </button>
     </div>
   </div>
 
   
 
-  <button (click) = "saveThePlan()"> save </button>
+  
 </div>
 
 

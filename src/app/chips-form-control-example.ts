@@ -32,7 +32,24 @@ export class ChipsFormControlExample {
   }
 
   saveThePlan() {
+    let request: any = {};
+    request['elements'] = this.selectedElems;
     console.log(this.selectedElems);
+
+    // video position and elements positions
+    let positions : any = {}
+    var e3 = document.getElementById("demoVideo");
+    if (e3 != null) {
+      positions['video'] = JSON.stringify(e3.getBoundingClientRect());
+    }
+    
+    for (let key of Object.keys(this.selectedElems)) {
+      var e = document.getElementById("object-" + key);
+      if (e == null) {console.log('not found element');continue;}
+      positions[key] = JSON.stringify(e.getBoundingClientRect())
+    }
+    request['positions'] = positions
+    console.log(request)
   }
 
   keywords = ['angular', 'how-to', 'tutorial', 'accessibility'];

@@ -7,25 +7,40 @@ p {
 }
 
 .video-container {
-  height: 300px;
-  width: 300px;
+  height: 700px;
+  width: 60%;
   position: relative;
 }
 
 .video-container video {
-  width: 100%;
-  height: 100%;
   position: absolute;
   object-fit: cover;
   z-index: 0;
+  left: 0; 
+  top: 0;
+  max-width: 100%; 
+  max-height: 100%;
+  width: auto; 
+  height: auto; 
+
+  background-size: cover;
+  overflow: hidden;
 }
 
 /* Just styling the content of the div, the *magic* in the previous rules */
 .video-container .caption {
-  left: 100%;
+  left: 75%;
   z-index: 1;
   position: relative;
   text-align: center;
   color: #dc0000;
   padding: 10px;
+}
+
+.video-container textarea {
+  height: 50px; 
+  background-color: transparent; 
+  border: 0 none;
+  z-index: 1;
+  color: #dc0000;
 }
