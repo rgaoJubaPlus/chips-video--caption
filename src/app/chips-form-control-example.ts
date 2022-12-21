@@ -14,8 +14,8 @@ import { CdkDragEnd, CdkDragDrop } from '@angular/cdk/drag-drop';
 export class ChipsFormControlExample {
   Object = Object;
   selectedElems: any = {
-    city: { startX: 0, startY: 0, captions: []},
-    caption: { startX: 0, startY: 0, captions: [] },
+    city: { startX: 0, startY: 0, content: []},
+    caption: { startX: 0, startY: 0, content: [] },
   };
 
   onDragEnded(reelID: string, event: CdkDragEnd) {
@@ -77,11 +77,11 @@ export class ChipsFormControlExample {
   }
 
   removeCaption(keyword: string, caption: string) {
-    const index = this.selectedElems[keyword]['captions'].indexOf(caption);
+    const index = this.selectedElems[keyword]['content'].indexOf(caption);
     console.log(index)
     if (index >= 0) {
       // this.keywords.splice(index, 1);
-      this.selectedElems[keyword]['captions'].splice(index, 1);
+      this.selectedElems[keyword]['content'].splice(index, 1);
     }
   }
 
@@ -90,7 +90,7 @@ export class ChipsFormControlExample {
 
     // Add our keyword
     if (value) {
-      this.selectedElems[keyword]['captions'].push(value);
+      this.selectedElems[keyword]['content'].push(value);
     }
 
     // Clear the input value
