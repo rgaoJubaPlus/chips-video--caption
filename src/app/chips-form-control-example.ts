@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { CdkDragEnd, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { HttpsService } from './https.service';
 
 /**
  * @title Chips with form control
@@ -18,6 +19,8 @@ export class ChipsFormControlExample {
     city: { startX: 0, startY: 0, captions: [] },
     caption: { startX: 0, startY: 0, captions: [] },
   };
+
+  constructor(private http: HttpsService) {}
 
   onDragEnded(reelID: string, event: CdkDragEnd) {
     if (reelID == null || event == null) return;
@@ -54,6 +57,9 @@ export class ChipsFormControlExample {
     }
     request['sizes'] = positions;
     console.log(request);
+    this.http.generateVideo(request).subscribe(response =>{
+       console.log(response)
+    })
   }
 
   keywords = ['angular', 'how-to', 'tutorial', 'accessibility'];
