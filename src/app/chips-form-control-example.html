@@ -8,8 +8,8 @@
         <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
     </video>
     <div class="caption">
-      <div *ngFor="let key of Object.keys(selectedElems)"  id="{{ 'object-' + key}}">
-        <textarea aria-label="'textarea-' + key"
+      <div *ngFor="let key of Object.keys(selectedElems)" >
+        <textarea  id="{{ 'object-' + key}}" aria-label="'textarea-' + key"
         style="height: 50px; width: width: 100%;;  background-color: transparent; border: 0 none;z-index: 1;" 
         cdkDrag 
         cdkDragBoundary=".container"
